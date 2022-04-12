@@ -1,5 +1,5 @@
 const btn = document.querySelectorAll("a.btn.btn-primary")
-//console.log(btn)
+
 btn.forEach(function (button, index) {
     button.addEventListener("click", function (event) {
         var btnItem = event.target
@@ -7,7 +7,6 @@ btn.forEach(function (button, index) {
         var productImg = product.children[0].querySelector("img").src
         var productName = product.children[1].querySelector("h5").innerText
         var productPrice = product.children[1].querySelector("span").innerText
-        // console.log(productPrice,productImg,productName)
         addcart(productPrice, productImg, productName)
     })
 })
@@ -35,23 +34,23 @@ function addcart(productPrice, productImg, productName) {
 function carttotal(){
     var cartItem = document.querySelectorAll("tbody tr")
     var totalPrice = 0
-    // console.log(cartItem.length)
+
     for (var i=0; i<cartItem.length;i++){
         var inputValue = cartItem[i].querySelector("input").value
     
         var productPrice = cartItem[i].querySelector(".prices").innerHTML
     
         totalPriceA = inputValue*productPrice*1000
-        // totalPriceB = totalPriceA.toLocaleString('de-DE')
+ 
         
         totalPrice = totalPrice + totalPriceA
-        // console.log(totalPrice)
+
         totalPriceC = totalPrice.toLocaleString('de-DE') 
     }
     var carttotalA = document.querySelector(".price-total span")
     carttotalA.innerHTML = totalPriceC
     inputChange()
-    // console.log(carttotalA)
+
 }
 
 function deleteCart(){
@@ -62,7 +61,7 @@ function deleteCart(){
             var cartDelete = event.target
             var cartItemA = cartDelete.parentElement.parentElement
             cartItemA.remove()
-            // console.log(cartItemA)
+
             carttotal()
         })
     }
